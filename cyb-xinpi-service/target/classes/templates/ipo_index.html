@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>中国资本市场信息披露平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="信息披露,沪市,深市,中小板,创业板,新三板,基金,债券,公司公告,上市公司,中证网,中证报,中国证券报"/>
+    <meta name="Description" content="中证网－中国权威的财经证券资讯网站,资本市场信息披露平台,覆盖沪市、深市、新三板、基金、债券、监管机构信息披露"/>
+
+    <base target="_blank"/>
+    <!--统计meta-->
+    <!--统计meta end-->
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.cs.com.cn/images/logo-cs.png"/>
+    <link rel="Stylesheet" href="/css/2018global.css"/>
+    <link rel="Stylesheet" href="/css/2018sec.css"/>
+    <SCRIPT src="/js/jquery1.42.min.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></SCRIPT>
+    <link  rel="Stylesheet" href="/css/jquery.autocomplete.css"/>
+    <SCRIPT src="/js/jquery.autocomplete.min.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="/cyb/data/company.js" type="text/javascript"></SCRIPT>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script src="/js/tool.js"></script>
+    <script src="/js/company.js"></script>
+    <!--  <script type="text/javascript">
+          $(function () {
+              initcode($("#s"));
+          });
+          var filename = "gsgg.html";
+          var page_NO = getQueryString("p");
+          page_NO = isENums(page_NO) ? page_NO : 0;
+          page_NO = page_NO > 99 ? 99 : page_NO;
+          loadScript("json/7/19/" + page_NO + ".js?t=" + (new Date().getTime()), processData);
+      </script>
+-->
+    <script>
+        function processData(){
+            $(document).ready(getNew2bulltein);
+        }
+        //该方法用于给日期、时间补零
+        addZero = function (num) {
+            if (parseInt(num) < 10) {
+                num = "0" + num
+            }
+            return num
+        };
+        //该方法把毫秒数转化成具体日期
+        //参数 毫秒值
+        function formatMsToDate (ms) {
+            if (ms) {
+                var oDate = new Date(ms),
+                    oYear = oDate.getFullYear(),
+                    oMonth = oDate.getMonth() + 1,
+                    oDay = oDate.getDate(),
+                    oHour = oDate.getHours(),
+                    oMin = oDate.getMinutes(),
+                    oSen = oDate.getSeconds(),
+                    oTime = oYear + '-' + addZero(oMonth) + '-' + addZero(oDay);
+                // ' + addZero(oHour) + ':' +
+                // addZero(oMin) + ':' + addZero(oSen);
+                return oTime;
+            } else {
+                return ""
+            }
+        };
+        //最新公告
+        $(function () {
+            getIPObulltein(1); //加载交易所公告数据
+        });
+        function getIPObulltein(pageindex) {
+            var url = "http://192.168.217.109:8080/ipo/v1/ipo/"+pageindex+".json"
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                error: function (json) {
+                    //  $("#loading").html("没有数据");
+                },
+                beforeSend: function () {
+                    // $("#loading").html(loadingIMG);
+                },
+                success: function (json) {
+                    if (json != null && json.data.data.length > 0) {
+                        console.log(json)
+                        var productData = json.data.data.splice(0,20);
+                        var trs = "";
+                        trs+="<table>";
+                        $.each(productData, function (i, row) {
+                            trs+= "<tr>";
+                            trs+='<td class="code" ><a href=>'+row.secname+'</a></td>';
+                            trs+='<td class="td_title" ><a href="'+row.f003v+'">'+row.f002v+'<img src="images/dot_pdf.gif"></a></td>';
+                            trs+='<td class="date">'+formatMsToDate(row.f001d) + '</td>';
+                            trs+= "</tr>";
+                        });
+                        trs+="</table>";
+                        trs+= p_i_new(pageindex,json.data.total)
+
+                        $("#gsgg_ul").html(trs);
+                        init_new(pageindex,json.data.total)
+                    } else {
+                        var trs = "<tr><td colspan='10'>暂无数据</td></tr>";
+                        $("#gsgg_ul").html(trs);
+                    }
+                }
+            });
+        }
+        function init_new() {
+            $("a[name='f_p']").each(function () {
+                $(this).click(function () {
+                    var m = $(this).attr('lay');
+                    getIPObulltein(m);
+                    return false;
+                });
+            })
+            $("#go_1").click(function () {
+                var index = parseInt($("#text_page_num").val());
+                var total = parseInt($(this).attr("lay"));
+                if (index > total || index < 1) {
+                    return false;
+                }
+                getIPObulltein(index);
+                return false;
+            });
+        }
+        function p_i_new(page, total) {
+            var retunt = "";
+            retunt += "<tr><th  colspan=\"3\" class=\"td_page\"><div class=\"pagebox\">";
+            if (page > 1) {
+                retunt += "<span><a name='f_p' lay='1' href='#'>&lt;&lt;</a></span>";
+                retunt += "<span><a name='f_p' lay='" + (page - 1) + "' href='#'>&lt;</a></span>";
+                if (page == 2) {
+                    retunt += "<span><a name='f_p' lay='" + (page - 1) + "' href=\"#\">" + (page - 1) + "</a></span>";
+                } else {
+                    if (page > 2) {
+                        for (i = 2; i > 0; i--) {
+                            if ((page - i) > 0) {
+                                retunt += "<span><a name='f_p' lay='" + (page - i) + "' href=\"#\">" + (page - i) + "</a></span>";
+                            }
+                        }
+                    }
+                }
+            }
+            retunt += "<span class=\"on\">" + page + "</span>";
+            for (i = 1; i < 3; i++) {
+                if ((page + i) < total/20) {
+                    retunt += "<span><a name='f_p' lay='" + (parseFloat(page) + i) + "' href=\"#\">" + (parseFloat(page) + i) + "</a></span>";
+                }
+            }
+            retunt += "...";
+            retunt += "<span><a name='f_p' lay='" + Math.ceil(total/20) + "' href=\"#\">" + Math.ceil(total/20) + "</a></span>";
+            if (page < total) {
+                retunt += "<span><a name='f_p' lay='" + (parseFloat(page) + 1) + "' href=\"#\">&gt;</a></span>";
+            }
+            retunt += "<span><a name='f_p' lay='" + total + "' href=\"#\">&gt;&gt;</a></span>";
+            retunt += "转到：<input  type=\"text\"  id='text_page_num'/>";
+            retunt += "<span class=\"search\"><a id='go_1' lay='" + total + "' href=\"#\">Go</a></span>";
+            retunt += "</div></th>";
+            retunt += "</tr>";
+            return retunt;
+        }
+    </script>
+</head>
+<body>
+<!--顶部-->
+<div class="top">
+    <iframe class="frmtop" frameborder="0" src="https://www.cs.com.cn/cshtml/zzb_jntop2020/" scrolling="no"></iframe>
+</div>
+<!--顶部结束 end-->
+
+<div class="main clear">
+    <div class="nav-line1">
+        <div class="nav-zq"><a href="http://www.cs.com.cn/"><img src="/images/none.gif"></a></div>
+        <div class="nav-zqline"></div>
+        <div class="nav-xp"><a href=""><img src="/images/none.gif"></a></div>
+        <div class="nav-ad"><a href=""><img src="/images/ad.jpg"></a></div>       <!--广告-->
+    </div>
+
+    <div class="nav-main">
+        <div class="nav-search">
+            <input type="text" value="请输入代码/简称/拼音/关键字..." autocomplete="off" class="ac_input" name="s" id="s"
+                   onfocus="if(value=='请输入代码/简称/拼音/关键字...') {value='';this.style.color='#0865a2';}"
+                   onblur="if(value=='') {value='请输入代码/简称/拼音/关键字...';this.style.color='#d3d3d3';}"
+                   style="color: rgb(211, 211, 211);">
+            <div class="imgbox"><input value="" type="button" onclick="return checkContentNew();"
+                                       style="cursor: pointer;"/></div>
+        </div>
+
+        <div class="nav-item">
+            <ul id="nav-item-ul" class="nav-item-ul clearfix">
+                <li class="nLi" style="display:none">
+                    <h3><a href="" target="_blank">首页</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgg.html" style="background-image:none;">信息披露</a></h3>
+                    <ul class="sub">
+                        <li><a href="gsgg.html">公司公告</a></li>
+                        <li><a href="sjsgg.html">深交所公告</a></li>
+                        <li><a href="zjhgg.html">证监会公告</a></li>
+                        <!-- <li><a href="fsgg.html">发审公告</a></li>-->
+                        <li><a href="http://www.szse.cn/lawrules/rules/regu/index.html">政策法规</a></li>
+                        <li><a href="http://www.csrc.gov.cn/pub/newsite/ztzl/chyeban/tzzjy/">投资者教育</a></li>
+                    </ul>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgl.html">公司概览</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="">交易总览</a></h3>
+                    <ul class="sub">
+                        <li><a href="http://www.csrc.gov.cn/csrc/c100033/zfxxgk_zdgk.shtml">公开信息</a></li>
+                        <li><a href="http://www.szse.cn/market/overview/index.html">市场总貌</a></li>
+                        <li><a href="http://www.szse.cn/market/periodical/month/index.html">交易统计</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <script id="jsID" type="text/javascript">
+                jQuery("#nav-item-ul").slide({
+                    type: "menu",
+                    titCell: ".nLi",
+                    targetCell: ".sub",
+                    effect: "slideDown",
+                    delayTime: 300,
+                    triggerTime: 0,
+                    returnDefault: true
+                });
+            </script>
+        </div>
+
+    </div>
+</div>
+
+<div class="main clear">
+    <div class="box820 fl boxformo">
+        <h3><span class="blueline">IPO公司预先披露</span></h3>
+
+        <!--		<div class="bd_search bd_search_1 hide">
+                        <div class="forminput"><input type="text" value="代码/简称/关键字" name="searchword" onfocus="if(value=='代码/简称/关键字') {value='';this.style.color='#0865a2';}" onblur="if(value=='') {value='代码/简称/关键字';this.style.color='#d3d3d3';}" style="color: rgb(211, 211, 211);"></div>
+                        <div class="formsel">
+                            <select>
+                                <option value="请选择公告类别" selected="selected">请选择公告类别</option>
+                                <option value="全部公告">全部公告</option>
+                                <option value="">拟发行上市公告</option>
+                                <option value="">发行上市公告</option>
+                                <option value="">年度报告</option>
+                                <option value="">半年度报告</option>
+                                <option value="">季度报告</option>
+                                <option value="">分红派息报告</option>
+                                <option value="">股本变动报告</option>
+                                <option value="">其他临时公告</option>
+                            </select>
+                        </div>
+                        <div class="formdate">
+                            <input type="text" value="2018-01-01" name="searchword" onfocus="if(value=='2018-01-01') {value='';this.style.color='#0865a2';}" onblur="if(value=='') {value='2018-01-01';this.style.color='#d3d3d3';}" style="color: rgb(211, 211, 211);">
+                            至
+                            <input type="text" value="2018-01-01" name="searchword" onfocus="if(value=='2018-01-01') {value='';this.style.color='#0865a2';}" onblur="if(value=='') {value='2018-01-01';this.style.color='#d3d3d3';}" style="color: rgb(211, 211, 211);">
+                        </div>
+                        <a href="L2-1-01-1沪市主板-检索结果.html"><span>检索</span></a>
+
+                </div>-->
+
+        <ul class="hide" id="gsgg_ul">
+            <table>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img
+                            src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000058</a></td>
+                    <td class="title"><a href="">深赛格：第七届董事会第二十九次临时会议决议公告<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000550</a></td>
+                    <td class="title"><a href="">江铃汽车：2018年2月产、销快讯<img src="/images/dot_pdf.gif"></a></td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <td class="code"><a href="">000795</a></td>
+                    <td class="title"><a href="">英洛华：关于收到中国证券监督管理委员会山西监管局行政监管措施决定书的公告<img src="/images/dot_pdf.gif"></a>
+                    </td>
+                    <td class="date">2018-03-06</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="td_page">
+                        <div class="pagebox"><span><a href="">&lt;</a></span><span><a href="">1</a></span><span
+                                class="on">2</span><span><a href="">3</a></span><span><a href="">4</a></span><span><a
+                                href="">5</a></span>...<span><a href="">1000</a></span><span><a href="">&gt;</a></span>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </ul>
+    </div>
+
+    <div class="box330 fr">
+        <iframe class="frmright" frameborder="0" src="rightIndex.html" scrolling="no"></iframe>
+    </div>
+</div>
+
+
+<div class="blank20"></div>
+
+<!--底部-->
+<div class="bottom">
+    <iframe class="frmbottom" frameborder="0" src="https://www.cs.com.cn/cshtml/hqbottom/index.html" scrolling="no"></iframe>
+</div>
+<!--底部结束 end-->
+
+</body>
+</html>
+

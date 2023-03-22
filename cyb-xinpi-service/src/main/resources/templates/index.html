@@ -1,0 +1,526 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html  lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>中证网--创业板信息披露平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="信息披露,沪市,深市,中小板,创业板,新三板,基金,债券,公司公告,上市公司,中证网,中证报,中国证券报"/>
+    <meta name="Description" content="中证网－中国权威的财经证券资讯网站,资本市场信息披露平台,覆盖沪市、深市、新三板、基金、债券、监管机构信息披露"/>
+
+    <base target="_blank"/>
+    <!--统计meta-->
+    <!--统计meta end-->
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.cs.com.cn/images/logo-cs.png"/>
+
+    <link rel="stylesheet" href="/css/2018index.css">
+    <!--    <script type="text/css" rel="Stylesheet"><%@include  file="static/css/2018index.css"></script>-->
+    <script src="/js/jquery1.42.min.js"></script>
+    <script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link rel="stylesheet" href="/css/jquery.autocomplete.css">
+    <script src="/js/all_jjgg.js"></script>
+    <script src="/js/all_jyts_t.js"></script>
+    <script src="/js/all_new.js"></script>
+    <script src="/js/all_sjsgg.js"></script>
+    <script src="/js/all_tfpts.js"></script>
+    <script src="/js/all_zjhgg.js"></script>
+    <script src="/js/tool.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/all_jyts_y.js"></script>
+    <script src="/js/autocomplete.js"></script>
+    <script src="/js/jquery.autocomplete.min.js"></script>
+    <link rel="stylesheet" href="/css/2018detal.css">
+    <link rel="stylesheet" href="/css/2018global.css">
+    <script src="/js/company.js"></script>
+
+
+
+</head>
+<body>
+<script>
+    function formatMsToDate4(ms) {
+        if (ms) {
+            var oDate = new Date(ms),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth() + 1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                oSen = oDate.getSeconds(),
+                oTime = oYear + '年' + addZero(oMonth) + '月' + addZero(oDay) + '日';
+            // ' + addZero(oHour) + ':' +
+            // addZero(oMin) + ':' + addZero(oSen);
+            return oTime;
+        } else {
+            return ""
+        }
+    }
+</script>
+<script>
+    $(function () {
+        initcode($("#kxtkw"));
+
+    });
+</script>
+
+<!--顶部-->
+<div class="top">
+   <!-- <iframe class="frmtop" frameborder="0" src="top.html" scrolling="no"></iframe>-->
+    <iframe class="frmtop" frameborder="0" src="https://www.cs.com.cn/cshtml/zzb_jntop2020/" scrolling="no"></iframe>
+
+</div>
+
+<!--顶部结束 end-->
+
+<div class="main clear">
+    <div class="nav-line1">
+        <div class="nav-zq"><a href="http://www.cs.com.cn/"><img src="/images/none.gif"></a></div>
+        <div class="nav-zqline"></div>
+        <div class="nav-xp"><a href=""><img src="/images/none.gif"></a></div>
+        <div class="nav-ad"><a href="http://neeq.cs.com.cn/page/index.html"><img src="/images/ad.jpg"></a></div>       <!--广告-->
+    </div>
+
+    <div class="nav-main">
+        <div class="nav-search">
+            <input type="text" id="kxtkw" value="请输入代码/简称/拼音/关键字..." autocomplete="off" class="ac_input" name="s"
+                   onfocus="if(value=='请输入代码/简称/拼音/关键字...') {value='';this.style.color='#0865a2';}"
+                   onblur="if(value=='') {value='请输入代码/简称/拼音/关键字...';this.style.color='#d3d3d3';}"
+                   style="color: rgb(211, 211, 211);">
+            <div class="imgbox"><input value="" type="button" onclick="return checkContentNew1();"
+                                       style="cursor: pointer;"/></div>
+
+        </div>
+
+        <div class="nav-item">
+            <ul id="nav-item-ul" class="nav-item-ul clearfix">
+                <li class="nLi" style="display:none">
+
+
+                    <h3><a href="" target="_blank">首页</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgg.html" style="background-image:none;">信息披露</a></h3>
+                    <ul class="sub">
+                        <li><a href="gsgg.html">公司公告</a></li>
+                        <li><a href="sjsgg.html">深交所公告</a></li>
+                        <li><a href="zjhgg.html">证监会公告</a></li>
+                       <!-- <li><a href="fsgg.html">发审公告</a></li>-->
+                        <li><a href="http://www.szse.cn/lawrules/rules/regu/index.html">政策法规</a></li>
+                        <li><a href=http://www.csrc.gov.cn/csrc/c100211/common_list.shtml>投资者教育</a></li>
+                    </ul>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgl.html">公司概览</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="">交易总览</a></h3>
+                    <ul class="sub">
+                        <li><a href="http://www.csrc.gov.cn/csrc/c100033/zfxxgk_zdgk.shtml">公开信息</a></li>
+                        <li><a href="http://www.szse.cn/market/overview/index.html">市场总貌</a></li>
+                        <li><a href="http://www.szse.cn/market/periodical/month/index.html">交易统计</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script id="jsID" type="text/javascript">
+                jQuery("#nav-item-ul").slide({
+                    type: "menu",
+                    titCell: ".nLi",
+                    targetCell: ".sub",
+                    effect: "slideDown",
+                    delayTime: 300,
+                    triggerTime: 0,
+                    returnDefault: true
+                });
+            </script>
+        </div>
+
+    </div>
+</div>
+
+<div class="main clear">
+    <div class="box820 fl boxformo">
+        <!--紧急公告-->
+        <div class="box1 tab1">
+            <div class="hd">
+                <div class="more">
+                    <a href="/gsgg.html" target="_blank">更多</a>
+                </div>
+                <ul>
+                    <li><a href="gsgg.html">最新公告</a></li>
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="conWrap">
+                    <ul>
+                        <div class="con2 hide" id="jjggdiv">
+                            <table>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">博雅生物自2018年3月27日开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">乐心医疗自2018年3月20日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">博雅生物自2018年3月27日开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">乐心医疗自2018年3月20日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_code"><a href="">300624</a></td>
+                                    <td class="td_title"><a href="">乐心医疗自2018年3月20日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27 12:27</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">jQuery(".tab1").slide({
+                mainCell: ".conWrap",
+                targetCell: ".more a",
+                effect: "fold"
+            });</script>
+        </div>
+        <!--最新公告-->
+        <div class="box1 box2 tab2 box1-forie6">
+            <div class="hd">
+                <div class="more">
+                    <a href="jjgg.html" target="_blank">更多</a>
+
+                </div>
+                <ul>
+                    <li><a href="jjgg.html">紧急公告</a></li>
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="conWrap">
+                    <ul>
+                        <div class="con2 hide" id="tb_newBulletin">
+                            <table>
+                                <tr>
+                                    <td class="td_name"><a href="">万兴科技</a></td>
+                                    <td class="td_title"><a href="">关于收到《中国证监会行政许可项目审查一次反馈意见通知书》的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">万兴科技</a></td>
+                                    <td class="td_title"><a href="">关于使用闲置募集资金购买理财产品的进展公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">博雅生物</a></td>
+                                    <td class="td_title"><a href="">关于召开2018年第一次临时股东大会通知的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">博雅生物</a></td>
+                                    <td class="td_title"><a href="">关于职工代表监事换届选举的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">乐心医疗</a></td>
+                                    <td class="td_title"><a href="">关于公司与清华控股集团财务有限公司签署《金融服务协议》的关...</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">乐心医疗</a></td>
+                                    <td class="td_title"><a href="">关于控股股东部分股权质押的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">乐心医疗</a></td>
+                                    <td class="td_title"><a href="">关于公司与清华控股集团财务有限公司签署《金融服务协议》的关...</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_name"><a href="">乐心医疗</a></td>
+                                    <td class="td_title"><a href="">关于控股股东部分股权质押的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">jQuery(".tab2").slide({
+                mainCell: ".conWrap",
+                targetCell: ".more a",
+                effect: "fold"
+            });</script>
+        </div>
+
+        <!--深交所 证监会 公告-->
+        <div class="box1 box2 tab3">
+            <div class="hd">
+                <div class="more">
+                    <a href="sjsgg.html" target="_blank">更多</a>
+                    <a href="zjhgg.html" target="_blank">更多</a>
+                </div>
+                <ul>
+                    <li><a href="sjsgg.html">深交所公告</a></li>
+                    <li><a href="zjhgg.html">证监会公告</a></li>
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="conWrap">
+                    <ul>
+                        <div class="con2 hide" id="sjsggdiv">
+                            <table>
+                                <tr>
+                                    <td class="td_title"><a href="">关于四川天邑康和通信股份有限公司股票在创业板上市交易的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">博雅生物自2018年3月27日开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">关于四川天邑康和通信股份有限公司股票在创业板上市交易的公告</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">博雅生物自2018年3月27日开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">万兴科技自2018年3月27日下午开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">博雅生物自2018年3月27日开市起停牌</a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ul>
+                    <ul>
+                        <div class="con2 hide" id="zjhggdiv">
+                            <table>
+                                <tr>
+                                    <td class="td_title"><a href="">关于核准启迪设计集团股份有限公司向李海建等发行股份购买资产的批复 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">并购重组委2018年第2次工作会议公告 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">并购重组委2017年第76次工作会议公告 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">并购重组委2018年第14次工作会议公告 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">关于核准江阴海达橡塑股份有限公司向邱建平等发行股份购买资产并募集配套资金的批复 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">并购重组委2017年第58次会议审核结果公告 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">关于核准江阴海达橡塑股份有限公司向邱建平等发行股份购买资产并募集配套资金的批复 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_title"><a href="">并购重组委2017年第58次会议审核结果公告 </a></td>
+                                    <td class="td_date">2018-03-27</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">jQuery(".tab3").slide({
+                mainCell: ".conWrap",
+                targetCell: ".more a",
+                effect: "fold"
+            });</script>
+        </div>
+
+    </div>
+    <!--交易提示-->
+    <div class="box330 fr">
+        <div class="box-jyts">
+            <div class="right-nav"><a href="jyts.html"><img src="/images/none.gif"></a></div>
+            <div class="right-note">*仅显示部分信息</div>
+            <div class="right-con">
+                <div class="slideTxtBox" >
+                    <div class="hd" id="date_div">
+                        <script>
+                            var date = new Date();
+                            var trs="";
+                            trs="<ul><li>"+formatMsToDate4(date.getTime())+"</li><li>次日</li></ul>"
+                            $("#date_div").html(trs);
+                        </script>
+                    </div>
+                    <div class="bd hide">
+                        <ul>
+                            <table id="jrtse_div">
+                                <tr>
+                                    <th>今日申购</th>
+                                    <td><a href="">百达智能</a><a href="">云华通</a></td>
+                                </tr>
+                                <tr>
+                                    <th>今日增发</th>
+                                    <td><a href="">医联网</a><a href="">三源信息</a><a href="">摩天之星</a><br><a href="">钢劲型钢</a><a href="">香杨能源</a></td>
+                                </tr>
+                                <tr class="noborder">
+                                    <th>股东大会召　　开</th>
+                                    <td><a href="">百达智能</a><a href="">源云华通</a><a href="">三源信信息</a><br><a href="">摩天之星</a><a href="">钢劲型钢</a><a href="">香杨能源</a></td>
+                                </tr>
+                            </table>
+                        </ul>
+                        <ul>
+                            <table id="jrtse_y_div">
+                                <tr>
+                                    <th>股东大会召　　开</th>
+                                    <td><a href="">百达智能</a><a href="">源云华通</a><a href="">三源信信息</a><br><a href="">摩天之星</a><a href="">钢劲型钢</a><a href="">香杨能源</a></td>
+                                </tr>
+                                <tr>
+                                    <th>今日申购</th>
+                                    <td><a href="">百达智能</a><a href="">云华通</a></td>
+                                </tr>
+                                <tr class="noborder">
+                                    <th>今日增发</th>
+                                    <td><a href="">医联网</a><a href="">三源信息</a><a href="">摩天之星</a><br><a href="">钢劲型钢</a><a href="">香杨能源</a></td>
+                                </tr>
+                            </table>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+            </div>
+            <div class="right-more"><a href="jyts.html">更多交易提示</a></div>
+        </div>
+        <!--<div class="box-ad">
+            <a href="dqgg.html"><img src="images/ad-dqbg.jpg" alt="定期报告"></a>
+        </div>-->
+        <div class="box-tfpts">
+            <div class="right-nav"><a href="tfp.html"><img src="/images/none.gif"></a></div>
+            <div class="right-note">*仅显示部分信息</div>
+            <div class="right-con hide" id="tfpdiv">
+                <table>
+                    <tr>
+                        <th>代码</th>
+                        <th class="name">简称</th>
+                        <th>停牌时间</th>
+                        <th>复牌时间</th>
+                        <th>停牌日期</th>
+                    </tr>
+                    <tr>
+                        <td>300341</td>
+                        <td class="name"><a href="">麦迪电气</a></td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日</td>
+                    </tr>
+                    <tr>
+                        <td>300341</td>
+                        <td class="name"><a href="">麦迪电气</a></td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日</td>
+                    </tr>
+                    <tr>
+                        <td>300341</td>
+                        <td class="name"><a href="">麦迪电气</a></td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日</td>
+                    </tr>
+                    <tr class="noborder">
+                        <td>300341</td>
+                        <td class="name"><a href="">麦迪电气</a></td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日<br>09:30</td>
+                        <td>3月30日</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right-more"><a href="tfp.html">更多停复牌提示</a></div>
+        </div>
+        <div class="box-ad">
+            <img src="/images/ad-ttzjy.jpg" usemap="#Map" hidefocus="true"/>
+            <map name="Map">
+                <area shape="rect" coords="9,13,325,56" href="http://www.csrc.gov.cn/csrc/c100211/common_list.shtml" alt="投资者教育">
+                <area shape="rect" coords="10,65,123,86" href="http://www.csrc.gov.cn/csrc/c100211/common_list.shtml" alt="准入门槛">
+                <area shape="rect" coords="125,62,215,87" href="http://www.csrc.gov.cn/csrc/c100211/common_list.shtml" alt="开户流程">
+                <area shape="rect" coords="221,63,316,88" href=http://www.csrc.gov.cn/csrc/c100211/common_list.shtml alt="交易规则">
+            </map>
+        </div>
+        <div class="box-xp">
+            <ul>
+                <li><a href="http://xinpi.cs.com.cn/new/">
+                    <div class="xp-s-xp"></div>
+                </a></li>
+                <li><a href="http://hgt.cs.com.cn/index.html">
+                    <div class="xp-s-hgt"></div>
+                </a></li>
+                <li><a href="http://sgt.cs.com.cn/index.html">
+                    <div class="xp-s-sgt"></div>
+                </a></li>
+                <li><a href="http://neeq.cs.com.cn/page/index.html">
+                    <div class="xp-s-xsb"></div>
+                </a></li>
+                <li><a href="http://kcb.cs.com.cn/kcb/index.html">
+                    <div class="xp-s-kcb"></div>
+                </a></li>
+
+                <li><a href="#">
+                    <div class="xp-s-jj"></div>
+                </a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="blank10"></div>
+<!--底部-->
+<!--<div class="bottom">
+    <iframe class="frmbottom" frameborder="0" src="bottom.html" scrolling="no"></iframe>
+</div>-->
+<div class="bottom">
+<iframe class="frmbottom" frameborder="0" src="https://www.cs.com.cn/cshtml/hqbottom/index.html" scrolling="no"></iframe>
+<!--底部结束 end-->
+</div>
+</body>
+</html>
+

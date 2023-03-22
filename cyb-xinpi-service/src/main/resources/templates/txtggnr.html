@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>中国资本市场信息披露平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="信息披露,沪市,深市,中小板,创业板,新三板,基金,债券,公司公告,上市公司,中证网,中证报,中国证券报"/>
+    <meta name="Description" content="中证网－中国权威的财经证券资讯网站,资本市场信息披露平台,覆盖沪市、深市、新三板、基金、债券、监管机构信息披露"/>
+
+    <base target="_blank"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.cs.com.cn/images/logo-cs.png"/>
+    <link  rel="Stylesheet" href="/css/2018global.css"/>
+    <link  rel="Stylesheet" href="/css/2018sec.css"/>
+    <link rel="Stylesheet" href="/css/jquery.autocomplete.css"/>
+    <link rel="stylesheet" href="../static/css/2018global.css">
+    <link rel="stylesheet" href="../static/css/2018sec.css">
+    <link rel="stylesheet" href="../static/css/jquery.autocomplete.css">
+</head>
+<body>
+
+
+<!--顶部-->
+<div class="top">
+    <iframe class="frmtop" frameborder="0" src="https://www.cs.com.cn/cshtml/zzb_jntop2020/" scrolling="no"></iframe>
+</div>
+<div class="main clear">
+    <div class="nav-line1">
+        <div class="nav-zq"><a href="http://www.cs.com.cn/"><img src="/images/none.gif"></a></div>
+        <div class="nav-zqline"></div>
+        <div class="nav-xp"><a href=""><img src="/images/none.gif"></a></div>
+        <div class="nav-ad"><a href=""><img src="/images/ad.jpg"></a></div>       <!--广告-->
+    </div>
+
+    <div class="nav-main">
+        <div class="nav-search">
+            <input type="text" value="请输入代码/简称/拼音/关键字..." autocomplete="off" class="ac_input" name="s" id="s"
+                   onfocus="if(value=='请输入代码/简称/拼音/关键字...') {value='';this.style.color='#0865a2';}"
+                   onblur="if(value=='') {value='请输入代码/简称/拼音/关键字...';this.style.color='#d3d3d3';}"
+                   style="color: rgb(211, 211, 211);">
+            <div class="imgbox"><input value="" type="button" onclick="return checkContentNew();"
+                                       style="cursor: pointer;"/></div>
+        </div>
+
+        <div class="nav-item">
+            <ul id="nav-item-ul" class="nav-item-ul clearfix">
+                <li class="nLi" style="display:none">
+                    <h3><a href="" target="_blank">首页</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgg.html" style="background-image:none;">信息披露</a></h3>
+                    <ul class="sub">
+                        <li><a href="gsgg.html">公司公告</a></li>
+                        <li><a href="sjsgg.html">深交所公告</a></li>
+                        <li><a href="zjhgg.html">证监会公告</a></li>
+                        <li><a href="http://www.szse.cn/lawrules/rules/regu/index.html">政策法规</a></li>
+                        <li><a href="http://www.csrc.gov.cn/pub/newsite/ztzl/chyeban/tzzjy/">投资者教育</a></li>
+                    </ul>
+                </li>
+                <li class="nLi">
+                    <h3><a href="gsgl.html">公司概览</a></h3>
+                </li>
+                <li class="nLi">
+                    <h3><a href="">交易总览</a></h3>
+                    <ul class="sub">
+                        <li><a href="http://www.csrc.gov.cn/csrc/c100033/zfxxgk_zdgk.shtml">公开信息</a></li>
+                        <li><a href="http://www.szse.cn/market/overview/index.html">市场总貌</a></li>
+                        <li><a href="http://www.szse.cn/market/periodical/month/index.html">交易统计</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script id="jsID" type="text/javascript">
+                jQuery("#nav-item-ul").slide({
+                    type: "menu",
+                    titCell: ".nLi",
+                    targetCell: ".sub",
+                    effect: "slideDown",
+                    delayTime: 300,
+                    triggerTime: 0,
+                    returnDefault: true
+                });
+            </script>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="box330 fr">
+    <iframe class="frmright" frameborder="0" src="rightIndex.html" scrolling="no"></iframe>
+</div>
+<!--底部-->
+<div class="bottom">
+    <iframe class="frmbottom" frameborder="0" src="https://www.cs.com.cn/cshtml/hqbottom/index.html" scrolling="no"></iframe>
+</div>
+<!--底部结束 end-->
+</body>
+</html>

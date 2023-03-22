@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.itemicon1,.itemicon2,.itemicon3,.itemicon4,.item-span-lineleft,.item-span-lineright,.box1 .hd .more,.box2 .hd .more,.box3 .hd .more,.box4 .hd .more{background:url(../images/item-icon.png) no-repeat;}
+.box1 .hd .more{background-position:40px -191px}
+
+.box1{ width:100%; text-align:left;  margin-top:7px;z-index:0;height:486px;_height:482px;}
+.box2{margin-top:20px;}
+.box1 .hd{line-height:43px; height:43px;padding:0;border-bottom:2px solid #0087c1;  position:relative;font-size:18px;}
+.box1 .hd .more{ float:right;width:60px;padding-top: 3px;}
+.box1 .hd .more a{font-size:16px;text-decoration:none;}
+.box1 .hd ul{ float:left;  position:absolute;top:0;  }
+.box1 .hd ul li{ float:left; cursor:pointer; height:40px;padding:3px 0px 0 0px;width:154px;text-align:center;}
+.box1 .hd ul li.li-long{width:260px;}
+.box1 .hd ul li a{text-decoration:none;}
+.box1 .hd ul li.on{background:#fff;height:40px;_height:43px;padding:3px 0px 0 0px;width:154px;background:#0087c1; color:#0d5ebf;}
+.box1 .hd ul li.on a{color:#fff;}
+.box1 .hd ul li.li-long.on{width:260px;_width:154px;}
+
+.box1-forie6 .hd ul li{_width:260px;}
+.box1-forie6 .hd ul li.on{_width:260px;}
+
+.box1 .bd table{width:100%;border-collapse: separate;border-spacing: 3px;padding:5px;margin-top:15px;}
+.box1 .bd table tr{height:45px;}
+.box1 .bd table tr:hover{background:#edf5fe;}
+.box1 .bd table td{padding:0 10px;border-bottom:1px solid #f1f1f1;font-size:16px;line-height:36px;color:#000;}
+.box1 .bd table td a{text-decoration:none;font-size:16px;text-align:left;}
+
+.box1 .con1 table td{padding:10px;}
+.box1 .con2 table td{font-size:14px;color:#9e9e9e;}
+
+
+.td_name{width:100px;text-align:center;}
+.td_name a,.td_detail a{color:#0087c1;}
+.td_con{text-align:left;}
+.td_detail{width:80px;text-align:center;}
+.td_date{width:120px;text-align:center;}
+.td_code{width:120px;text-align:center;}
+.td_from{width:45px;}
+.td_type{width:140px;}
+.td_company{width:65px;}
+.td_wx{width:80px;}
+.td_answer{width:80px;}
+
+.box-tfpts{margin-bottom:24px;}

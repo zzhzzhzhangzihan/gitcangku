@@ -1,0 +1,54 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+spring:
+  application:
+    name: xinpi-parent # 应用名称
+  servlet:
+    multipart:
+      max-request-size: 100MB # 最大请求文件大小,默认10MB
+      max-file-size: 10MB # 单个请求文件大小,默认1MB
+  redis:
+    host: 192.168.217.109
+    port: 6379
+    database: 0 # 操作的是0号数据库
+    jedis: #Redis连接池配置
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: 1ms #连接池最大阻塞等待时间
+        max-idle: 4 #连接池中的最大空闲连接
+        min-idle: 0 #连接池中的最小空闲连接
+  web:
+    resources:
+      static-locations: classpath:/static/css,classpath:/static/js/,classpath:/static/images/,classpath:/templates/,
+
+  freemarker.cache: false    #页面不加载缓存，修改即时生效，生产时改为true
+  datasource:
+    druid:
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     url: jdbc:mysql://192.168.217.94:3306/gateway?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnec=true
+     username: gateway
+     password: gateway1
+  mvc:
+    static-path-pattern: /static/**
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+  #Mybatis配置
+  main:
+    allow-circular-references: true
+   # web-application-type: none
+
+mybatis-plus:
+
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID # id生成策略类型
+swagger:
+  enable: true

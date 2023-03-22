@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>中国资本市场信息披露平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="Keywords" content="信息披露,沪市,深市,中小板,创业板,新三板,基金,债券,公司公告,上市公司,中证网,中证报,中国证券报" />
+<meta name="Description" content="中证网－中国权威的财经证券资讯网站,资本市场信息披露平台,覆盖沪市、深市、新三板、基金、债券、监管机构信息披露" />
+
+<base target="_blank" />
+<!--统计meta-->
+<!--统计meta end-->
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cs.com.cn/images/logo-cs.png" />
+<link type="text/css" rel="Stylesheet" href="../static/css/2018global.css" />
+<link type="text/css" rel="Stylesheet" href="../static/css/2018sec.css" />
+<SCRIPT src="../static/js/jquery1.42.min.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="../static/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></SCRIPT>
+
+<link type="text/css" rel="Stylesheet" href="../static/css/jquery.autocomplete.css" />
+<SCRIPT src="../static/js/jquery.autocomplete.min.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="../static/js/tool.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="/cyb/data/company.js" type="text/javascript"></SCRIPT>
+<link href="../static/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../static/js/jquery-ui-1.8.17.custom.min.js"></script>
+
+<script type="text/javascript" src="../static/js/common.js"></script>
+<style type="text/css">
+.hide{
+	display:none;
+}
+.box_left_Title{font:bold 24px "宋体";color:#203d79;line-height:30px;text-align:center;padding:25px 0px 20px 0}
+.box_left_From{font:normal 12px "宋体";color:#000000;height:26px;text-align:center;line-height:26px;background:#dceaf3;}
+.box_left_content{font:normal 14px "宋体";color:#000;line-height:28px;}
+</style>
+<script language="javascript" type="text/javascript">
+        function hide_datepicker() {
+            $('#d1').datepicker("hide");
+            $('#d2').datepicker("hide");
+        }
+$(function(){initcode($("#s"));});
+var p=getQueryString("p");
+loadScript(p,function(){
+	if(gsggdtl&&gsggdtl.data){
+		$("#gsgg_detail_div").html(gsggdtl.data);
+		$("#gsgg_detail_div .box_left_content").css({"overflow-x":"visible","overflow-y":"visible","height":"100%"});
+	}
+});
+    </script>
+</head>
+<body>
+
+<!--顶部-->
+<div class="top"><iframe class="frmtop" frameborder="0" src="top.html" scrolling="no"></iframe></div>
+<!--顶部结束 end-->
+
+<div class="main clear">
+	<div class="nav-line1">
+		<div class="nav-zq"><a href="http://www.cs.com.cn/"><img src="../static/images/none.gif"></a></div>
+		<div class="nav-zqline"></div>
+		<div class="nav-xp"><a href="index.html"><img src="../static/images/none.gif"></a></div>
+		  <div class="nav-ad"><a href=""><img src="../static/images/ad.jpg"></a></div>       <!--广告-->
+	</div>
+
+	<div class="nav-main">
+		<div class="nav-search">
+			<input type="text" value="请输入代码/简称/拼音/关键字..." autocomplete="off" class="ac_input" name="s" id="s" onfocus="if(value=='请输入代码/简称/拼音/关键字...') {value='';this.style.color='#0865a2';}" onblur="if(value=='') {value='请输入代码/简称/拼音/关键字...';this.style.color='#d3d3d3';}" style="color: rgb(211, 211, 211);"><div class="imgbox"><input value="" type="button" onclick="return checkContentNew();" style="cursor: pointer;"/></div>
+		</div>
+
+
+		<div class="nav-item">
+			<ul id="nav-item-ul" class="nav-item-ul clearfix">
+				<li class="nLi" style="display:none">
+					<h3><a href="" target="_blank">首页</a></h3>
+				</li>
+				<li class="nLi">
+					<h3><a href="gsgg.html" style="background-image:none;">信息披露</a></h3>
+					<ul class="sub">
+							<li><a href="gsgg.html">公司公告</a></li>
+							<li><a href="sjsgg.html">深交所公告</a></li>
+							<li><a href="zjhgg.html">证监会公告</a></li>
+							<li><a href="fsgg.html">发审公告</a></li>
+							<li><a href="zcfg.html">政策法规</a></li>
+							<li><a href="tzzjy.html">投资者教育</a></li>
+					</ul>
+				</li>
+				<li class="nLi">
+					<h3><a href="gsgl.html">公司概览</a></h3>
+				</li>
+				<li class="nLi">
+					<h3><a href="gkxx.html">交易总览</a></h3>
+					<ul class="sub">
+							<li><a href="gkxx.html">公开信息</a></li>
+							<li><a href="sczm.html">市场总貌</a></li>
+							<li><a href="jytj.html">交易统计</a></li>
+					</ul>
+				</li>
+			</ul>
+			<script id="jsID" type="text/javascript">			
+			jQuery("#nav-item-ul").slide({type:"menu",titCell:".nLi",targetCell:".sub",effect:"slideDown",delayTime:300 ,triggerTime:0,returnDefault:true });
+			</script>
+		</div>
+
+	</div>
+</div>
+
+<div class="main clear">
+	<div class="box820 fl boxformo">
+		<div class="mrjyts_box" id="gsgg_detail_div">
+		</div>
+	</div>
+
+	<div class="box330 fr">
+		<iframe class="frmright" frameborder="0" src="L2_right.html" scrolling="no"></iframe>
+	</div>
+</div>
+
+
+<div class="blank20"></div>
+
+<!--底部-->
+ <div class="bottom"><iframe class="frmbottom" frameborder="0" src="bottom.html" scrolling="no"></iframe></div>
+<!--底部结束 end-->
+
+</body>
+</html>
+
